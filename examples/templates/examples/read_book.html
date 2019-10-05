@@ -1,0 +1,43 @@
+{% load widget_tweaks %}
+
+<div class="modal-header">
+  <h3 class="modal-title">Book details</h3>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <table>
+  <tbody >
+  <tr>
+      <td>Тип:</td>
+      <td>{{ equipment.type }}</td>
+  </tr>
+  <tr>
+      <td>Модель:</td>
+      <td>{{ equipment.name }}</td>
+  </tr>
+  <tr>
+      <td>Территория:</td>
+      <td>{{ equipment.ter }}</td>
+  </tr>
+  <tr>
+      <td>Корпус:</td>
+      <td>{{ equipment.bild }}</td>
+  </tr>
+  </tbody >
+  <tr>
+      <td>Отделение:</td>
+      <td>{{ equipment.dep }}</td>
+  </tr>
+  <tr>
+      <td>Автор:</td>
+      <td>{{ equipment.created_by }}</td>
+  </tr>
+  </table>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
