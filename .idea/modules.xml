@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:/django/inventory_it/.idea/django-bootstrap-modal-forms-master.iml" filepath="C:/django/inventory_it/.idea/django-bootstrap-modal-forms-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/django-bootstrap-modal-forms-master.iml" filepath="$PROJECT_DIR$/.idea/django-bootstrap-modal-forms-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/inventory_it.iml" filepath="$PROJECT_DIR$/.idea/inventory_it.iml" />
     </modules>
   </component>
 </project>
