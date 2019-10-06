@@ -4,6 +4,8 @@ import django_tables2 as tables
 from django.contrib.auth.models import User
 from django_currentuser.middleware import (
     get_current_user, get_current_authenticated_user)
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 # As model field:
 from django_currentuser.db.models import CurrentUserField
@@ -105,3 +107,17 @@ class Book(models.Model):
     book_type = models.PositiveSmallIntegerField(choices=BOOK_TYPES)
 
     timestamp = models.DateField(auto_now_add=True, auto_now=False)
+
+@receiver(post_save, sender = equipment)
+def add_history(instance, **kwargs):
+    a_record=history()
+    a_record.id_eq=instance.objects.get()
+    a_record.type=instance.type
+    a_record.name=equipment.name
+    a_record.ter=equipment.ter
+    a_record.dep=equipment.dep
+    a_record.bild=equipment.bild
+    a_record.status = equipment.status
+    a_record.note=equipment.note
+    a_record.dt=datetime.now
+    a_record.save()
