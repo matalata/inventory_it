@@ -19,10 +19,12 @@ from django_filters.views import FilterView
 from .filters import EqFilter
 
 
+
 #@method_decorator(login_required, name='dispatch')
 class FilteredEqListView(ExportMixin, SingleTableMixin, FilterView):
     table_class = equipmentTable
     filterset_class = EqFilter
+    table_pagination = {"per_page": 5}
     queryset = equipment.objects.all()
     template_name = "index.html"
     show_header = True
