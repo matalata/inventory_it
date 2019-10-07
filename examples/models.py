@@ -111,13 +111,13 @@ class Book(models.Model):
 @receiver(post_save, sender = equipment)
 def add_history(instance, **kwargs):
     a_record=history()
-    a_record.id_eq=instance.objects.get()
-    a_record.type=instance.type
-    a_record.name=equipment.name
-    a_record.ter=equipment.ter
-    a_record.dep=equipment.dep
-    a_record.bild=equipment.bild
-    a_record.status = equipment.status
-    a_record.note=equipment.note
-    a_record.dt=datetime.now
+    a_record.id_eq=equipment.objects.get(pk = instance.pk)
+    a_record.type=type_eq.objects.get(pk = instance.type.pk)
+    a_record.name=equipment.objects.get(pk = instance.pk).name
+    a_record.ter= ter.objects.get(pk = instance.ter.pk)
+    a_record.dep=dep.objects.get(pk = instance.dep.pk)
+    a_record.bild=bild.objects.get(pk = instance.bild.pk)
+    a_record.status = status.objects.get(pk = instance.status.pk)
+    a_record.note=equipment.objects.get(pk = instance.pk).note
+    #a_record.dt=datetime.now
     a_record.save()
