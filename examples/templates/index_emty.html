@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load django_tables2 %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+  {% include "_modal.html" %}
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+       <div class="row">
+          <div class="col-12 mb-3">
+            <button class="create-book btn btn-primary" type="button" name="button">
+              <span class="fa fa-plus mr-2"></span>Добавить</button>
+          </div>
+          <div class="col-12 mb-3">
+
+           <div class="col-sm-10">
+                <div class="pull-right">
+                    {% if view.export_formats %}
+                        {% for format in view.export_formats %}
+                        <a href="{% export_url format %}" class="btn btn-xs btn-default">
+                            download  <code>.{{ format }}</code>
+                        </a>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                {% if filter %}
+                    <form action="" method="get" class="form form-inline">
+                        {% bootstrap_form filter.form layout='inline' %}
+                        {% bootstrap_button 'filter' %}
+                    </form>
+                {% endif %}
+            </div>
+
+
+
+
+          </div>
+       </div>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+{% block extrascripts %}
+  <script type="text/javascript">
+    $(function () {
+      // Log in & Sign up buttons
+      $(".login-btn").modalForm({formURL: "{% url 'login' %}"});
+      $(".signup-btn").modalForm({formURL: "{% url 'signup' %}"});
+
+      // Create book button
+      $(".create-book").modalForm({formURL: "{% url 'create_book' %}"});
+
+      // Update book buttons
+      $(".update-book").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      // Read book buttons
+      $(".read-book").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      // Delete book buttons
+      $(".delete-book").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      })
+
+      // Hide message
+      $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+        $(".alert").slideUp(500);
+      });
+
+    });
+  </script>
+{% endblock extrascripts %}

@@ -25,10 +25,10 @@ class FilteredEqListView(ExportMixin, SingleTableMixin, FilterView):
     filterset_class = EqFilter
     table_pagination = {"per_page": 5}
     queryset = equipment.objects.all()
-    template_name = "index.html"
     show_header = True
     export_formats = ("csv", "xls")
     model=equipment
+    template_name = "index_emty.html"
 
 
 
