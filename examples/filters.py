@@ -6,4 +6,4 @@ from .models import equipment
 class EqFilter(FilterSet):
     class Meta:
         model = equipment
-        fields = {"name": ["exact", "contains"], "type": ["exact"]}
+        fields = {"type": ["exact"], "dep": ["exact"]}

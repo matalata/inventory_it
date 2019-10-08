@@ -1,6 +1,4 @@
 from django.urls import reverse_lazy
-from django.views import generic
-from django.shortcuts import render, get_object_or_404, redirect
 from bootstrap_modal_forms.generic import (BSModalLoginView,
                                            BSModalCreateView,
                                            BSModalUpdateView,
@@ -8,7 +6,7 @@ from bootstrap_modal_forms.generic import (BSModalLoginView,
                                            BSModalDeleteView)
 
 from .forms import BookForm, CustomUserCreationForm, CustomAuthenticationForm
-from .models import Book, equipment
+from .models import equipment
 import django_tables2 as tables
 from .tables import equipmentTable
 from django.contrib.auth.decorators import login_required
@@ -17,6 +15,7 @@ from django_tables2.export.views import ExportMixin
 from django_tables2 import MultiTableMixin, RequestConfig, SingleTableMixin, SingleTableView
 from django_filters.views import FilterView
 from .filters import EqFilter
+
 
 
 
@@ -31,11 +30,6 @@ class FilteredEqListView(ExportMixin, SingleTableMixin, FilterView):
     export_formats = ("csv", "xls")
     model=equipment
 
-
-class Index(generic.ListView):
-    model = Book
-    context_object_name = 'books'
-    template_name = 'index.html'
 
 
 class BookCreateView(BSModalCreateView):
@@ -77,3 +71,5 @@ class CustomLoginView(BSModalLoginView):
     template_name = 'examples/login.html'
     success_message = 'Success: You were successfully logged in.'
     success_url = reverse_lazy('index')
+
+

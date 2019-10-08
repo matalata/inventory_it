@@ -50,6 +50,7 @@ class status(models.Model): # статус
 class equipment(models.Model):
     type=models.ForeignKey(type_eq, on_delete=None, null=False, default='')
     name=models.CharField(max_length=20, verbose_name=u'Модель')
+    number=models.CharField(max_length=20, verbose_name=u'Инв. номер')
     ter=models.ForeignKey(ter, on_delete=None, null=False, default='', verbose_name=u'Территория')
     dep=models.ForeignKey(dep, on_delete=None, null=False, default='', verbose_name=u'Отделение')
     bild=models.ForeignKey(bild, on_delete=None, null=False, default='', verbose_name=u'Корпус')
@@ -78,6 +79,7 @@ class history(models.Model):
     id_eq=models.ForeignKey(equipment, on_delete=None, null=False, default='')
     type=models.ForeignKey(type_eq, on_delete=None, null=False, default='')
     name=models.CharField(max_length=20, verbose_name=u'Модель')
+    number = models.CharField(max_length=20, verbose_name=u'Инв. номер')
     ter=models.ForeignKey(ter, on_delete=None, null=False, default='')
     dep=models.ForeignKey(dep, on_delete=None, null=False, default='')
     bild=models.ForeignKey(bild, on_delete=None, null=False, default='')
@@ -89,31 +91,13 @@ class history(models.Model):
     def __str__(self):
         return self.name
 
-
-class Book(models.Model):
-    HARDCOVER = 1
-    PAPERBACK = 2
-    EBOOK = 3
-    BOOK_TYPES = (
-        (HARDCOVER, 'Hardcover'),
-        (PAPERBACK, 'Paperback'),
-        (EBOOK, 'E-book'),
-    )
-    title = models.CharField(max_length=50)
-    publication_date = models.DateField(null=True)
-    author = models.CharField(max_length=30, blank=True)
-    price = models.DecimalField(max_digits=5, decimal_places=2)
-    pages = models.IntegerField(blank=True, null=True)
-    book_type = models.PositiveSmallIntegerField(choices=BOOK_TYPES)
-
-    timestamp = models.DateField(auto_now_add=True, auto_now=False)
-
 @receiver(post_save, sender = equipment)
 def add_history(instance, **kwargs):
     a_record=history()
     a_record.id_eq=equipment.objects.get(pk = instance.pk)
     a_record.type=type_eq.objects.get(pk = instance.type.pk)
     a_record.name=equipment.objects.get(pk = instance.pk).name
+    a_record.number = equipment.objects.get(pk=instance.pk).number
     a_record.ter= ter.objects.get(pk = instance.ter.pk)
     a_record.dep=dep.objects.get(pk = instance.dep.pk)
     a_record.bild=bild.objects.get(pk = instance.bild.pk)
