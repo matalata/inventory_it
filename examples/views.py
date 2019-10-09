@@ -29,7 +29,7 @@ class FilteredEqListView(ExportMixin, SingleTableMixin, FilterView):
     export_formats = ("csv", "xls")
     model=equipment
     template_name = "index.html"
-
+    #template_name = "bootstrap_template.html"
 
 class BookCreateView(BSModalCreateView):
     template_name = 'examples/create_book.html'
