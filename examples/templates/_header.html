@@ -4,7 +4,14 @@
 <header style="border-bottom: 1px solid #eee;">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
+
             <div class="navbar-header">
+            {% if user.is_authenticated %}
+
+            <button class="create-book btn btn-primary" type="button" name="button">
+              <span class="fa fa-plus mr-2"></span>Добавить</button>
+
+             {% endif %}
                 <a href="/" class="navbar-brand">Учет оборудования</a>
             </div>
 

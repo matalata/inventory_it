@@ -11,10 +11,8 @@
     <div class="row">
       <div class="col">
        <div class="row">
-          <div class="col-12 mb-3">
-            <button class="create-book btn btn-primary" type="button" name="button">
-              <span class="fa fa-plus mr-2"></span>Добавить</button>
-          </div>
+
+          {% if user.is_authenticated %}
           <div class="col-12 mb-3">
 
            <div class="col-sm-10">
@@ -35,16 +33,15 @@
                 {% endif %}
             </div>
 
-            {% if user.is_authenticated %}
-                <p>Your account doesn't have access to this page. To proceed,
-                   please login with an account that has access.</p>
+
+                {% load django_tables2 %}
+                {% render_table table "django_tables2/bootstrap-responsive.html" %}
+
             {% else %}
-                <p>Please login to see this page.</p>
+                <p><h4>Войдите в систему.</h4></p>
             {% endif %}
 
 
-            {% load django_tables2 %}
-            {% render_table table "django_tables2/bootstrap-responsive.html" %}
 
           </div>
         </div>
