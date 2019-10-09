@@ -11,34 +11,8 @@
     <div class="row">
       <div class="col">
        <div class="row">
-          <div class="col-12 mb-3">
-            <button class="create-book btn btn-primary" type="button" name="button">
-              <span class="fa fa-plus mr-2"></span>Добавить</button>
-          </div>
-          <div class="col-12 mb-3">
+          <h4>Войдите в систему</h4>
 
-           <div class="col-sm-10">
-                <div class="pull-right">
-                    {% if view.export_formats %}
-                        {% for format in view.export_formats %}
-                        <a href="{% export_url format %}" class="btn btn-xs btn-default">
-                            download  <code>.{{ format }}</code>
-                        </a>
-                        {% endfor %}
-                    {% endif %}
-                </div>
-                {% if filter %}
-                    <form action="" method="get" class="form form-inline">
-                        {% bootstrap_form filter.form layout='inline' %}
-                        {% bootstrap_button 'filter' %}
-                    </form>
-                {% endif %}
-            </div>
-
-
-
-
-          </div>
        </div>
 
       </div>

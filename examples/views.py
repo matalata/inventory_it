@@ -15,8 +15,8 @@ from django_tables2.export.views import ExportMixin
 from django_tables2 import MultiTableMixin, RequestConfig, SingleTableMixin, SingleTableView
 from django_filters.views import FilterView
 from .filters import EqFilter
-
-
+from django_currentuser.middleware import (
+    get_current_user, get_current_authenticated_user)
 
 
 #@method_decorator(login_required, name='dispatch')
@@ -28,7 +28,10 @@ class FilteredEqListView(ExportMixin, SingleTableMixin, FilterView):
     show_header = True
     export_formats = ("csv", "xls")
     model=equipment
-    template_name = "index_emty.html"
+    if (get_current_authenticated_user() is not  None):
+      template_name = "index.html"
+    else:
+      template_name = "index.html"
 
 
 
