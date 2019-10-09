@@ -28,11 +28,7 @@ class FilteredEqListView(ExportMixin, SingleTableMixin, FilterView):
     show_header = True
     export_formats = ("csv", "xls")
     model=equipment
-    if (get_current_authenticated_user() is not  None):
-      template_name = "index.html"
-    else:
-      template_name = "index.html"
-
+    template_name = "index.html"
 
 
 class BookCreateView(BSModalCreateView):

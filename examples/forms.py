@@ -12,7 +12,7 @@ from .models import equipment
 class BookForm(BSModalForm):
     class Meta:
         model = equipment
-        fields = ['type','name', 'ter', 'bild','status','dep','note']
+        fields = ['type','name', 'number','ter', 'bild','status','dep','note']
 
 
 class CustomUserCreationForm(PopRequestMixin, CreateUpdateAjaxMixin,
