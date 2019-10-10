@@ -5,19 +5,16 @@
 <!doctype html>
 <html>
 <head>
-    <title>django_tables2 with bootstrap 3 template example</title>
+    <title>IT</title>
     {% bootstrap_css %}
 
     <link href="{% static 'django_tables2/bootstrap.css' %}" rel="stylesheet" />
 </head>
 <body>
+
     <div class="container">
+    {% include "_header.html" %}
         {% block body %}
-
-        <a href="https://getbootstrap.com/docs/3.3/css/#tables">Bootstrap 3 - table docs</a> |
-        <a href="https://getbootstrap.com/docs/3.3/components/#pagination">Bootstrap 3 - pagination docs</a> <br />
-
-        <h3>{% block title %}django_tables2 with <a href="https://getbootstrap.com/docs/3.3">Bootstrap 3</a> template example{% endblock %}</h3>
 
         <div class="row">
             <div class="col-sm-10">

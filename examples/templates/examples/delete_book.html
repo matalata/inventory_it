@@ -4,19 +4,19 @@
   {% csrf_token %}
 
   <div class="modal-header">
-    <h3 class="modal-title">Delete Book</h3>
+    <h3 class="modal-title">Удаление запись</h3>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
 
   <div class="modal-body">
-    <p class="delete-text">Are you sure you want to delete book with title
-      <strong>{{ book.title }}</strong>?</p>
+    <p class="delete-text">Удалить
+      <strong>{{ equipment.name }}</strong>?</p>
   </div>
 
   <div class="modal-footer">
-    <button type="submit" class="delete-btn btn btn-danger">Delete</button>
+    <button type="submit" class="delete-btn btn btn-danger">Удалить</button>
   </div>
 
 </form>

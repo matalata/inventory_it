@@ -19,17 +19,18 @@ from django_currentuser.middleware import (
     get_current_user, get_current_authenticated_user)
 
 
-#@method_decorator(login_required, name='dispatch')
+# @method_decorator(login_required, name='dispatch')
 class FilteredEqListView(ExportMixin, SingleTableMixin, FilterView):
     table_class = equipmentTable
     filterset_class = EqFilter
-    table_pagination = {"per_page": 5}
+    table_pagination = {"per_page": 20}
     queryset = equipment.objects.all()
     show_header = True
     export_formats = ("csv", "xls")
-    model=equipment
+    model = equipment
     template_name = "index.html"
     #template_name = "bootstrap_template.html"
+
 
 class BookCreateView(BSModalCreateView):
     template_name = 'examples/create_book.html'
@@ -70,5 +71,3 @@ class CustomLoginView(BSModalLoginView):
     template_name = 'examples/login.html'
     success_message = 'Success: You were successfully logged in.'
     success_url = reverse_lazy('index')
-
-
